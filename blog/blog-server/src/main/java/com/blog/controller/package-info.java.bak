@@ -1,0 +1,7 @@
+/**
+ * Controller layer - REST API endpoints
+ * 
+ * This package contains all REST controllers that handle HTTP requests
+ * and return responses to clients.
+ */
+package com.blog.controller;

@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: false
+  
+  # 禁用Redis自动配置（测试环境可能没有Redis）
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+
+jwt:
+  secret: test-secret-key-for-jwt-token-generation-in-test-environment-must-be-at-least-256-bits
+  expiration: 604800000
+  header: Authorization
+  prefix: Bearer
+
+# 阿里云配置（测试环境使用mock）
+aliyun:
+  oss:
+    endpoint: http://test-endpoint
+    accessKeyId: test-access-key
+    accessKeySecret: test-access-secret
+    bucketName: test-bucket
+  sms:
+    accessKeyId: test-access-key
+    accessKeySecret: test-access-secret
+    signName: test-sign
+    templateCode: test-template
+
+logging:
+  level:
+    com.blog: INFO
+    org.springframework: WARN
+    org.hibernate: WARN
